@@ -1,5 +1,7 @@
 package com.globalLogic.Driver.model;
 
+import com.globalLogic.vehicle.model.VehicleSegment;
+
 import javax.persistence.*;
 
 @Entity

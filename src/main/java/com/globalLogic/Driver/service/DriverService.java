@@ -2,9 +2,9 @@ package com.globalLogic.Driver.service;
 
 import com.globalLogic.Driver.dto.DriverDto;
 import com.globalLogic.Driver.model.Driver;
-import com.globalLogic.Driver.model.VehicleSegment;
+import com.globalLogic.vehicle.model.VehicleSegment;
 import com.globalLogic.Driver.repository.DriverRepo;
-import com.globalLogic.Driver.repository.VehicleRepo;
+import com.globalLogic.vehicle.repository.VehicleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

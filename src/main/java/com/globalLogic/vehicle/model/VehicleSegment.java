@@ -1,4 +1,4 @@
-package com.globalLogic.Driver.model;
+package com.globalLogic.vehicle.model;
 
 import javax.persistence.*;
 
