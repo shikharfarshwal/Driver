@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/driver")
+@RequestMapping("/drivers")
 public class DriverController {
 
     private final DriverService driverService;
@@ -26,7 +26,7 @@ public class DriverController {
         driverService.registerDriver(driverDto);
     }
 
-    @PostMapping("/allDrivers")
+    @GetMapping
     public List<Driver> getAllDrivers() {
         return driverService.findAllDrivers();
     }

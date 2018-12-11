@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/vehicle")
+@RestController("/vehicles")
 public class VehicleController {
 
     @Autowired
-    VehicleService vehicleService;
+    private VehicleService vehicleService;
 
-    @GetMapping("/")
+    @GetMapping
     ResponseEntity<List<VehicleSegment>> getVehicleTypes() {
         return new ResponseEntity<>(vehicleService.getAllVehicleTypes(), HttpStatus.ACCEPTED);
     }
