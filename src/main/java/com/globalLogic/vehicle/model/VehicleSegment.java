@@ -13,6 +13,10 @@ public class VehicleSegment {
 
     private String vehicleType;
 
+    public VehicleSegment(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
     public String getVehicleType() {
         return vehicleType;
     }

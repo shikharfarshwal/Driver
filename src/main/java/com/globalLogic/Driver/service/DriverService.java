@@ -5,11 +5,16 @@ import com.globalLogic.Driver.model.Driver;
 import com.globalLogic.vehicle.model.VehicleSegment;
 import com.globalLogic.Driver.repository.DriverRepo;
 import com.globalLogic.vehicle.repository.VehicleRepo;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -45,8 +50,28 @@ public class DriverService {
         return driver;
     }
 
-    public List<Driver> findAllDrivers() {
-        return driverRepo.findAll();
+
+    public List<DriverDto> findAllDrivers(String vehicleType) {
+        List<Driver> drivers = driverRepo.findAll();
+        List<Driver> driversWithVehicleType = drivers.stream()
+                .filter(driver -> driver.getVehicleSegment().getVehicleType().equalsIgnoreCase(vehicleType))
+                .collect(Collectors.toList());
+        return map.apply(driversWithVehicleType);
     }
 
+    private static Function<List<Driver>, List<DriverDto>> map = (List<Driver> a) -> {
+        ModelMapper modelMapper = new ModelMapper();
+        PropertyMap<Driver, DriverDto> orderMap = new PropertyMap<Driver, DriverDto>() {
+            protected void configure() {
+                map().setVehicleType(source.getVehicleSegment().getVehicleType());
+            }
+        };
+        List<DriverDto> driverDtoList = new ArrayList<>();
+        for (Driver d : a) {
+            DriverDto driverDto = new DriverDto();
+            modelMapper.map(d, driverDto);
+            driverDtoList.add(driverDto);
+        }
+        return driverDtoList;
+    };
 }

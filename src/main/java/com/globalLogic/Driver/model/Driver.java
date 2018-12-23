@@ -25,6 +25,16 @@ public class Driver {
     @OneToOne
     private VehicleSegment vehicleSegment;
 
+
+    public Driver(String firstName, String lastName, String dlNo, String registrationNo, VehicleSegment vehicleSegment) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dlNo = dlNo;
+        this.registrationNo = registrationNo;
+        this.vehicleSegment = vehicleSegment;
+    }
+
     public String getRegistrationNo() {
         return registrationNo;
     }

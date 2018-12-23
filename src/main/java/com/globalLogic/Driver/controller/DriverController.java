@@ -21,13 +21,13 @@ public class DriverController {
     }
 
 
-    @RequestMapping(value="/register",method = RequestMethod.POST,consumes ="application/json")
+    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
     public void registerDriver(@RequestBody DriverDto driverDto) {
         driverService.registerDriver(driverDto);
     }
 
-    @GetMapping
-    public List<Driver> getAllDrivers() {
-        return driverService.findAllDrivers();
+    @GetMapping("/vehicles/{vehicleType}")
+    public List<DriverDto> getAllDrivers(@PathVariable("vehicleType") String vehicleType) {
+        return driverService.findAllDrivers(vehicleType);
     }
 }

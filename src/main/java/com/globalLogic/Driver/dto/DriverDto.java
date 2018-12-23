@@ -14,6 +14,17 @@ public class DriverDto {
 
     private String registrationNo;
 
+    public DriverDto() {
+    }
+
+    public DriverDto(String firstName, String lastName, String dlNo, String vehicleType, String registrationNo) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dlNo = dlNo;
+        this.vehicleType = vehicleType;
+        this.registrationNo = registrationNo;
+    }
+
     public String getRegistrationNo() {
         return registrationNo;
     }
@@ -52,5 +63,16 @@ public class DriverDto {
 
     public void setDlNo(String dlNo) {
         this.dlNo = dlNo;
+    }
+
+    @Override
+    public String toString() {
+        return "DriverDto{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dlNo='" + dlNo + '\'' +
+                ", vehicleType='" + vehicleType + '\'' +
+                ", registrationNo='" + registrationNo + '\'' +
+                '}';
     }
 }
